@@ -6,10 +6,9 @@ import (
 	"strconv"
 )
 
-func generatePorts() []int {
-	initialPort := 8090
+func generatePorts(initialPort int, numberOfPorts int) []int {
 	ports := make([]int, 5)
-	for i := 0; i < 5; i++ {
+	for i := 0; i < numberOfPorts; i++ {
 		ports[i] = initialPort + i
 		fmt.Printf("port is %v\n", ports[i])
 	}
@@ -32,7 +31,7 @@ func createServer(port int) {
 func main() {
 	//create a http server
 
-	ports := generatePorts()
+	ports := generatePorts(8090, 5)
 	for i, _ := range ports {
 		fmt.Println(ports[i])
 		go createServer(ports[i])
